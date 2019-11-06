@@ -1,17 +1,16 @@
 #include "TXLib.h"
 
-const float dt = 0.1;
+const double dt = 0.1;
 
-void drawBall(float x, float y, float r, float R, float G, float B )
+void drawBall(float x, float y, float r, float R, float G, float B)
 {
-    int j = r;
-    for(r; r > 0; r-- )
-    {
-        txSetColor(RGB(R - (r/j)*R, G - (r/j)*G, B - (r/j)*B));
-        txSetFillColor(RGB(R - (r/j)*R, G - (r/j)*G, B - (r/j)*B));
-        txCircle(x, y, r);
-        txSetFillColor(RGB(0, 0, 0));
-    }
+	for (float j = r; j > 0; j--)
+	{
+		txSetColor(RGB(R - (j / r)*R, G - (j / r)*G, B - (j / r)*B));
+		txSetFillColor(RGB(R - (j / r)*R, G - (j / r)*G, B - (j / r)*B));
+		txCircle(x, y, j);
+		txSetFillColor(RGB(0, 0, 0));
+	}
 }
 
 void moveBall(float *x, float *y, float *Vx, float *Vy)
